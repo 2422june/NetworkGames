@@ -11,4 +11,9 @@ public class Define
         public GameObject gameObject;
         public UnityEngine.Object component;
     }
+
+    public enum Scene
+    {
+        Awake, Load, Title, Lobby
+    }
 }

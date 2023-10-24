@@ -18,10 +18,7 @@ public class Data
 
 public class DataManager : ManagerBase
 {
-    private void Start()
-    {
-        Load();
-    }
+
 
     private void Load()
     {

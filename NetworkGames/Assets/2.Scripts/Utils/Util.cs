@@ -49,6 +49,7 @@ public static class Util
 
     public static void SetRoot(string root, bool recursive = false)
     {
+        _root = null;
         if (!recursive)
         {
             _root = GameObject.Find(root).transform;
@@ -56,6 +57,11 @@ public static class Util
         else
         {
             _root = Find(root).transform;
+        }
+
+        if(_root == null)
+        {
+            Debug.LogError("Can't Find Object");
         }
     }
 
