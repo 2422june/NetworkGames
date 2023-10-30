@@ -49,6 +49,7 @@ public static class Util
 
     public static void SetRoot(string root, bool recursive = false)
     {
+        _root = null;
         if (!recursive)
         {
             _root = GameObject.Find(root).transform;
@@ -57,10 +58,27 @@ public static class Util
         {
             _root = Find(root).transform;
         }
+
+        if(_root == null)
+        {
+            Debug.LogError("Can't Find Object");
+        }
     }
 
     public static GameObject GetRoot()
     {
         return _root.gameObject;
+    }
+
+    public static T Load<T>(string path) where T : UnityEngine.Object
+    {
+        T go = Resources.Load<T>(path);
+        return go;
+    }
+
+    public static T[] Loads<T>(string path) where T : UnityEngine.Object
+    {
+        T[] go = Resources.LoadAll<T>(path);
+        return go;
     }
 }
