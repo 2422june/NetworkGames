@@ -7,6 +7,11 @@ using UnityEngine;
 [RequireComponent(typeof(Managers))] // 필수 컴포넌트로 지정
 public class ApplicationController : MonoBehaviour
 {
+    [SerializeField]
+    private bool isDevelop;
+    [SerializeField]
+    private Define.Scene startScene;
+
     private void Awake()
     {
         Managers.Root = Util.GetOrAddComponent<Managers>(gameObject);
@@ -18,6 +23,11 @@ public class ApplicationController : MonoBehaviour
 
     private void EnterGame()
     {
+        if(isDevelop)
+        {
+            Managers.Scene.LoadScene(startScene);
+            return;
+        }
         Managers.Scene.LoadScene(Define.Scene.Title);
     }
 }

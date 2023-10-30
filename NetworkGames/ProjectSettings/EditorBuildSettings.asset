@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Run/Lobby.unity
     guid: 63c73a817cd900445a34ba46adc7cd3a
+  - enabled: 1
+    path: Assets/Scenes/Prototype/TitlePrototype.unity
+    guid: 6d60b977f6514b84b89208f0b6e69d27
   m_configObjects: {}

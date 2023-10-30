@@ -14,7 +14,8 @@ public class Define
 
     public enum Scene
     {
-        Awake, Load, Title, Lobby
+        Awake, Load, Title, Lobby,
+        TitlePrototype
     }
 
     public enum BGM

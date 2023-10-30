@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
-using UnityEngine.SceneManagement;
-using SM = UnityEngine.SceneManagement.SceneManager;
 
 public class CharacterController2D : MonoBehaviour
 {
@@ -339,6 +337,6 @@ public class CharacterController2D : MonoBehaviour
 		yield return new WaitForSeconds(0.4f);
 		m_Rigidbody2D.velocity = new Vector2(0, m_Rigidbody2D.velocity.y);
 		yield return new WaitForSeconds(1.1f);
-		SM.LoadSceneAsync(SM.GetActiveScene().buildIndex);
+		Managers.Scene.LoadScene(Define.Scene.TitlePrototype);
 	}
 }
