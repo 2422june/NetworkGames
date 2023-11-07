@@ -16,7 +16,7 @@ public class Managers : MonoBehaviour
 
     private T Init<T>() where T : ManagerBase
     {
-        T manager = Util.GetOrAddComponent<T>(this.gameObject);
+        T manager = Util.GetOrAddComponent<T>(gameObject);
         if (manager == null)
         {
             Debug.LogError("Can't Get Manager Component");
@@ -28,7 +28,7 @@ public class Managers : MonoBehaviour
 
     private T InitPun<T>() where T : PunManagerBase
     {
-        T manager = Util.GetOrAddComponent<T>(this.gameObject);
+        T manager = Util.GetOrAddComponent<T>(gameObject);
         if (manager == null)
         {
             Debug.LogError("Can't Get Manager Component");
