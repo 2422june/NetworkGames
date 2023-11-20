@@ -48,13 +48,16 @@ public class CharacterController2D : MonoBehaviour
 
 	[System.Serializable]
 	public class BoolEvent : UnityEvent<bool> { }
+    
+	public GameObject cam;
 
-	private void Awake()
+    private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
+        cam.GetComponent<CameraController>().Init(transform);
 
-		if (OnFallEvent == null)
+        if (OnFallEvent == null)
 			OnFallEvent = new UnityEvent();
 
 		if (OnLandEvent == null)
@@ -333,10 +336,9 @@ public class CharacterController2D : MonoBehaviour
 		animator.SetBool("IsDead", true);
 		canMove = false;
 		invincible = true;
-		GetComponent<Attack>().enabled = false;
 		yield return new WaitForSeconds(0.4f);
 		m_Rigidbody2D.velocity = new Vector2(0, m_Rigidbody2D.velocity.y);
 		yield return new WaitForSeconds(1.1f);
-		Managers.Scene.LoadScene(Define.Scene.TitlePrototype);
+		Managers.Scene.LoadScene(Define.Scene.Awake);
 	}
 }

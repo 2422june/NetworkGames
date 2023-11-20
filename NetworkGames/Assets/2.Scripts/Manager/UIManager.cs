@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 //모든 UI를 저장하고 불러오기 편하게 하기 위한 용도. 각 씬의 컨트롤러에서 UI 추가
 
 public class UIManager : ManagerBase
 {
+    private LobbyScene _lobby;
     private Dictionary<Type, List<Define.UIData>> _uis = new Dictionary<Type, List<Define.UIData>>();
 
     public void Clear() { _uis.Clear(); }
@@ -127,5 +129,30 @@ public class UIManager : ManagerBase
     public GameObject GetUIObject<T>(string uiName) where T : UnityEngine.Object
     {
         return GetUIData<T>(uiName).gameObject;
+    }
+
+    public void SetLobby(LobbyScene lobby)
+    {
+        _lobby = lobby;
+    }
+
+    public void ShowJoin(Transform point, string room, RoomInfoBox infoBox)
+    {
+        _lobby.ShowJoin(point, room, infoBox);
+    }
+
+    public void UnshowJoin()
+    {
+        _lobby.UnshowJoin();
+    }
+
+    public void ShowRoomNamePopup()
+    {
+        _lobby.ShowRoomNamePopup();
+    }
+
+    public void ShowNicknamePopup()
+    {
+        _lobby.ShowNicknamePopup();
     }
 }

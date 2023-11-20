@@ -15,16 +15,24 @@ public class Define
     public enum Scene
     {
         Awake, Load, Title, Lobby,
-        TitlePrototype
+        InGame
     }
 
     public enum BGM
     {
-
+        Title, Lobby
     }
 
     public enum SFX
     {
+        JumpLand,
+        TitleSlash, TitleDark, Entry
+    }
 
+    public struct RoomData
+    {
+        public string _name;
+        public int _maxCount;
+        public int _curCount;
     }
 }

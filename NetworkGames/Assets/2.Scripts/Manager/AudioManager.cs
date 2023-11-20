@@ -36,7 +36,7 @@ public class AudioManager : ManagerBase
         string[] clips = System.Enum.GetNames(typeof(T));
         foreach (string clip in clips)
         {
-            _clips.Add(clip, Util.Load<AudioClip>($"/Audio/{parentFolder}/{clip}"));
+            _clips.Add(clip, Util.Load<AudioClip>($"Audio/{parentFolder}/{clip}"));
         }
     }
 

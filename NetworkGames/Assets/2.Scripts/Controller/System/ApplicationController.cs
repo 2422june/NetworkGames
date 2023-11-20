@@ -23,9 +23,12 @@ public class ApplicationController : MonoBehaviour
 
     private void EnterGame()
     {
-        if(isDevelop)
+        //Cursor.visible = false;
+
+
+        if (isDevelop)
         {
-            Managers.Scene.LoadScene(startScene);
+            //Managers.Scene.LoadScene(startScene);
             return;
         }
         Managers.Scene.LoadScene(Define.Scene.Title);

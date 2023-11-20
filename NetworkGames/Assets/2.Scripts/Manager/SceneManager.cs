@@ -13,24 +13,55 @@ public class SceneManager : ManagerBase
     private Define.Scene _nextScene;
     private float _loadingTime;
     private bool _onLoading;
+    private bool _isNet;
 
     public override void Init()
     {
+        _isNet = false;
         _onLoading = false;
         _loadingTime = 3;
     }
 
-    public void LoadScene(Define.Scene scene = Define.Scene.Load)
+
+    public void LoadScene(Define.Scene scene = Define.Scene.Load, bool isSkip = false, bool isNet = false)
     {
+        if(isNet)
+        {
+            _isNet = isNet;
+        }
+
+        if(isSkip)
+        {
+            _nextScene = scene;
+            _onLoading = true;
+        }
+
         if (_onLoading)
         {
+            string name = _nextScene.ToString();
+
             _onLoading = false;
-            SM.LoadScene(System.Enum.GetName(typeof(Define.Scene), _nextScene));
+            if(_isNet)
+            {
+                _isNet = false;
+                Managers.Photon.LoadScene(name);
+            }
+            else
+            {
+                SM.LoadScene(name);
+            }
         }
         else
         {
             _nextScene = scene;
-            SM.LoadScene("Load");
+            if (_isNet)
+            {
+                Managers.Photon.LoadScene("Load");
+            }
+            else
+            {
+                SM.LoadScene("Load");
+            }
         }
     }
 
@@ -52,6 +83,5 @@ public class SceneManager : ManagerBase
     public void OnLoad(SceneBase scene)
     {
         _scene = scene;
-        _onLoading = true;
     }
 }
